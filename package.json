@@ -1,0 +1,25 @@
+{
+  "name": "coin-base",
+  "version": "1.0.0",
+  "description": "Example demo coin with blockchain",
+  "main": "main.js",
+  "scripts": {
+    "start": "node src/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hainguyenvan/coin-base.git"
+  },
+  "author": "hainv",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hainguyenvan/coin-base/issues"
+  },
+  "homepage": "https://github.com/hainguyenvan/coin-base#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "crypto-js": "^3.1.9-1",
+    "express": "^4.16.3"
+  }
+}
