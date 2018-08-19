@@ -22,4 +22,4 @@ var initMessageHandler = function (socketIO) {
 
 
 
-initP2PServer(8000);
+// initP2PServer(8000);

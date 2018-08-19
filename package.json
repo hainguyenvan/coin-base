@@ -4,7 +4,7 @@
   "description": "Example demo coin with blockchain",
   "main": "main.js",
   "scripts": {
-    "start": "node src/main.js",
+    "start": "node src/server/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,6 +21,7 @@
     "body-parser": "^1.18.3",
     "crypto-js": "^3.1.9-1",
     "express": "^4.16.3",
+    "randomstring": "^1.1.5",
     "socket.io": "^2.1.1"
   }
 }
