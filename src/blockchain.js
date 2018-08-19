@@ -12,11 +12,20 @@ class BlockChain {
     }
 
     getLastestBlock() {
+        return this.chains[this.chains.length - 1];
+    }
 
+    hashMatchesDifficulty(hash, difficulty) {
+        
     }
 
     generateNextBlock(blockData) {
-        
+        let previousHash = this.getLastestBlock().hash;
+        let index = this.getLastestBlock().index;
+        let timestamp = new Date().getTime();
+        let data = blockData;
+        let block = new Block(index, previousHash, timestamp, data);
+        return block;
     }
 
     isValidNewBlock(newBlock, previousBlock) {
