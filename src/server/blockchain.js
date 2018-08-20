@@ -8,7 +8,7 @@ class BlockChain {
 
     createGenesisBlock() {
         let timestamp = new Date().getTime();
-        return new Block(0, '', timestamp, '');
+        return new Block(0, '', timestamp, {});
     }
 
     getLastestBlock() {

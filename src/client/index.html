@@ -26,7 +26,7 @@
     </nav>
     <!-- End tile -->
 
-    <div class="container-fluid">
+    <div class="container-fluid" ng-app="appBlockchain" ng-controller="ctrlBlockchain" ng-init="init()">
         <div class="row">
             <!-- Menu -->
             <nav class="col-md-2 d-none d-md-block bg-light sidebar">
@@ -84,45 +84,17 @@
                                 <th>#</th>
                                 <th>Previous Hash</th>
                                 <th>Hash</th>
+                                <th>Transactions</th>
                                 <th>Date</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1,001</td>
-                                <td>Lorem</td>
-                                <td>ipsum</td>
-                                <td>08/09/2018</td>
-                            </tr>
-                            <tr>
-                                <td>1,001</td>
-                                <td>Lorem</td>
-                                <td>ipsum</td>
-                                <td>08/09/2018</td>
-                            </tr>
-                            <tr>
-                                <td>1,001</td>
-                                <td>Lorem</td>
-                                <td>ipsum</td>
-                                <td>08/09/2018</td>
-                            </tr>
-                            <tr>
-                                <td>1,001</td>
-                                <td>Lorem</td>
-                                <td>ipsum</td>
-                                <td>08/09/2018</td>
-                            </tr>
-                            <tr>
-                                <td>1,001</td>
-                                <td>Lorem</td>
-                                <td>ipsum</td>
-                                <td>08/09/2018</td>
-                            </tr>
-                            <tr>
-                                <td>1,001</td>
-                                <td>Lorem</td>
-                                <td>ipsum</td>
-                                <td>08/09/2018</td>
+                            <tr ng-repeat="block in chains">
+                                <td>{{block.index}}</td>
+                                <td>{{block.previousHash}}</td>
+                                <td>{{block.hash}}</td>
+                                <td>{{block.transactions}}</td>
+                                <td>{{block.timestamp}}</td>
                             </tr>
                         </tbody>
                     </table>

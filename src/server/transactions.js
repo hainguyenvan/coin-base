@@ -1,3 +1,10 @@
+class Address {
+    constructor(id, name) {
+        this.id = id;
+        this.name = name
+    }
+}
+
 class Transactions {
     constructor(from, to, amount) {
         this.from = from;
@@ -6,4 +13,7 @@ class Transactions {
     }
 }
 
-module.exports =  Transactions;
+module.exports = {
+    Transactions: Transactions,
+    Address: Address
+};

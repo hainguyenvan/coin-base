@@ -58,7 +58,6 @@ app.controller('ctrlMiner', function ($scope, $http) {
             })
             .then(function (res) {
                     $scope.minerList = res.data;
-                    console.log('Miner list : ', $scope.minerList);
                 },
                 function (res) {
                     // failed
