@@ -16,16 +16,24 @@ class BlockChain {
     }
 
     hashMatchesDifficulty(hash, difficulty) {
-        
+
     }
 
-    generateNextBlock(blockData) {
+    generateNextBlock(tx) {
         let previousHash = this.getLastestBlock().hash;
-        let index = this.getLastestBlock().index;
+        let index = this.getLastestBlock().index + 1;
         let timestamp = new Date().getTime();
-        let data = blockData;
-        let block = new Block(index, previousHash, timestamp, data);
+        let transactions = tx;
+        let block = new Block(index, previousHash, timestamp, transactions);
         return block;
+    }
+
+    addBlockToChain(block) {
+        if (!this.isValidNewBlock(block, this.getLastestBlock())) {
+            return false;
+        }
+        this.chains.push(block);
+        return true;
     }
 
     isValidNewBlock(newBlock, previousBlock) {
@@ -43,6 +51,7 @@ class BlockChain {
             console.log('Invalid hash');
             return false;
         }
+        return true;
     }
 
     isValidChain(block) {
@@ -70,4 +79,4 @@ class BlockChain {
 }
 
 
-module.exports = BlockChain;
+module.exports = new BlockChain();

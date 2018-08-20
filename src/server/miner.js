@@ -1,4 +1,6 @@
-const randomstring = require("randomstring");
+const randomstring = require('randomstring');
+const blockchain = require('./blockchain');
+const Transactions = require('./transactions');
 
 const AMOUNT_DEFAULT = 100;
 
@@ -21,11 +23,16 @@ class MinerList {
         let id = randomstring.generate(12);
         let miner = new Miner(id, name);
         this.minerList.push(miner);
+
+        // Add block
+        let tx = new Transactions('', id, AMOUNT_DEFAULT);
+        let block = blockchain.generateNextBlock(tx);
+        blockchain.addBlockToChain(block);
         return true;
     }
 }
 
 module.exports = {
     Miner: Miner,
-    MinerList: MinerList
+    MinerList: new MinerList()
 }

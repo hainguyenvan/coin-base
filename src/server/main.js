@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors')
 
 const MinerManage = require('./miner');
-const BlockChain = require('./blockchain');
+const blockchain = require('./blockchain');
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -14,8 +14,7 @@ app.use(bodyParser.json());
 const router = express.Router();
 
 const HTTP_PORT = 3002;
-const blockChain = new BlockChain();
-const minerList = new MinerManage.MinerList();
+const minerList = MinerManage.MinerList;
 
 router.get('/', function (req, res) {
     res.json({
@@ -45,7 +44,7 @@ router.post('/addMiner', (req, res) => {
 
 // get all blocks
 router.get('/blocks', (req, res) => {
-    res.json(blockChain.chains);
+    res.json(blockchain.chains);
 });
 
 
