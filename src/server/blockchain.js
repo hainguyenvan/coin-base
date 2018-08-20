@@ -70,6 +70,7 @@ class BlockChain {
     }
 
     createTransaction(transaction) {
+        transaction.timestamp = new Date().getTime();
         this.pendingTransactions.push(transaction);
     }
 }
