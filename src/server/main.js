@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const cors = require('cors')
 
 const MinerManage = require('./miner');
 const BlockChain = require('./blockchain');
@@ -17,28 +18,26 @@ const blockChain = new BlockChain();
 const minerList = new MinerManage.MinerList();
 
 router.get('/', function (req, res) {
-    res.send({
+    res.json({
         msg: 'Welcome to our api !'
     });
 });
 
 // miner
 router.get('/miners', (req, res) => {
-    res.send({
-        data: minerList.minerList
-    });
+    res.json(minerList.minerList);
 });
 
 router.post('/addMiner', (req, res) => {
     let name = req.body.name;
     if (name == undefined) {
-        res.send({
+        res.json({
             status: 400,
             msg: 'Not invalid field name !s'
         });
     }
     minerList.addMiner(name);
-    res.send({
+    res.json({
         status: 200,
         msg: 'Successed !'
     })
@@ -46,7 +45,7 @@ router.post('/addMiner', (req, res) => {
 
 // get all blocks
 router.get('/blocks', (req, res) => {
-    res.send(blockChain.chains);
+    res.json(blockChain.chains);
 });
 
 
@@ -57,6 +56,7 @@ router.get('/blocks', (req, res) => {
 
 // get all peers
 
+app.use(cors());
 app.use('/api', router);
 app.listen(HTTP_PORT);
 console.log('Listening http on port: http://localhost:' + HTTP_PORT);
