@@ -73,7 +73,7 @@
                     <h2 class="h2">Mining</h2>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group mr-2">
-                            <button type="button" class="btn btn-primary" id="btnMining">Mining</button>
+                            <button type="button" class="btn btn-primary" id="btnMining" ng-click="showModalMining()">Mining</button>
                         </div>
                     </div>
                 </div>
@@ -207,13 +207,9 @@
                             <div class="form-group row">
                                 <label for="inputminerName" class="col-sm-2 col-form-label">Miner</label>
                                 <div class="col-sm-10">
-                                    <select id="inputState" class="form-control">
+                                    <select id="inputState" class="form-control" ng-model="addMiner">
                                         <option selected>Choose...</option>
-                                        <option>Acc1</option>
-                                        <option>Acc2</option>
-                                        <option>Acc3</option>
-                                        <option>Acc4</option>
-                                        <option>Acc5</option>
+                                        <option ng-repeat="miner in minerList" value="{{miner}}">{{miner.name}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -221,7 +217,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Mining</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="mining()">Mining</button>
                     </div>
                 </div>
 

@@ -24,6 +24,7 @@ var app = angular.module('appMiner', []);
 app.controller('ctrlMiner', function ($scope, $http) {
     $scope.minerName = '';
     $scope.minerList = [];
+    $scope.addMiner = null;
 
     $scope.init = function () {
         $scope.getMiner();
@@ -63,5 +64,13 @@ app.controller('ctrlMiner', function ($scope, $http) {
                     // failed
                     console.log('Failed !');
                 });
+    }
+
+    $scope.showModalMining = function() {
+        $scope.addMiner = null;
+    }
+
+    $scope.mining = function () {
+        console.log('Miner : ', $scope.addMiner);
     }
 });
