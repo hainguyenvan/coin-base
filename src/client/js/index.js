@@ -12,6 +12,7 @@ $(document).ready(function () {
 // Define url API
 const API_GET_CHAINS = 'http://localhost:3002/api/blocks';
 const API_GET_MINERS = 'http://localhost:3002/api/miners';
+const API_ADD_TRANSACTIONS = 'http://localhost:3002/api/addTransactions';
 
 var app = angular.module('appBlockchain', []);
 app.controller('ctrlBlockchain', function ($scope, $http) {
@@ -62,10 +63,29 @@ app.controller('ctrlBlockchain', function ($scope, $http) {
 
     $scope.sendCoin = function () {
         var transactions = {
-            from: $scope.from,
-            to: $scope.to,
+            from: {
+                id: JSON.parse($scope.from).id,
+                name: JSON.parse($scope.from).name
+            },
+            to:  {
+                id: JSON.parse($scope.to).id,
+                name:JSON.parse($scope.to).name
+            },
             amount: Number($scope.amount)
         }
+        $http({
+                url: API_ADD_TRANSACTIONS,
+                method: "POST",
+                data: transactions
+            })
+            .then(function (res) {
+                    // success
+                    $scope.getMiner();
+                },
+                function (res) {
+                    // failed
+                    console.log('Failed !');
+                });
         console.log('Transactions: ', transactions);
     }
 });

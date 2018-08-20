@@ -42,6 +42,20 @@ router.post('/addMiner', (req, res) => {
     })
 });
 
+// transactions
+router.post('/addTransactions', (req, res) => {
+    let tx = req.body;
+    blockchain.createTransaction(tx);
+    res.json({
+        msg: 'Successed !'
+    })
+});
+
+// get tx
+router.get('/txs', (req, res) => {
+    res.json(blockchain.pendingTransactions);
+});
+
 // get all blocks
 router.get('/blocks', (req, res) => {
     res.json(blockchain.chains);

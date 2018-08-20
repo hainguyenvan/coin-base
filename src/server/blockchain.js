@@ -3,7 +3,8 @@ const Block = require('./block')
 class BlockChain {
 
     constructor() {
-        this.chains = [this.createGenesisBlock()]
+        this.chains = [this.createGenesisBlock()];
+        this.pendingTransactions = [];
     }
 
     createGenesisBlock() {
@@ -13,10 +14,6 @@ class BlockChain {
 
     getLastestBlock() {
         return this.chains[this.chains.length - 1];
-    }
-
-    hashMatchesDifficulty(hash, difficulty) {
-
     }
 
     generateNextBlock(tx) {
@@ -72,9 +69,8 @@ class BlockChain {
         }
     }
 
-    replaceChain() {
-        // TODO - HaiNV
-        console.log('Replace chain');
+    createTransaction(transaction) {
+        this.pendingTransactions.push(transaction);
     }
 }
 
