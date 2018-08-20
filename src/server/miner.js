@@ -1,10 +1,13 @@
 const randomstring = require("randomstring");
 
+const AMOUNT_DEFAULT = 100;
+
 class Miner {
 
     constructor(id, name) {
         this.id = id;
         this.name = name;
+        this.amount = AMOUNT_DEFAULT
     }
 }
 

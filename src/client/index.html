@@ -17,41 +17,18 @@
 
     <!-- Custom styles for this template -->
     <link href="./publics/js/dashboard.css" rel="stylesheet">
-    <style type="text/css">
-        /* Chart.js */
-
-        @-webkit-keyframes chartjs-render-animation {
-            from {
-                opacity: 0.99
-            }
-            to {
-                opacity: 1
-            }
-        }
-
-        @keyframes chartjs-render-animation {
-            from {
-                opacity: 0.99
-            }
-            to {
-                opacity: 1
-            }
-        }
-
-        .chartjs-render-monitor {
-            -webkit-animation: chartjs-render-animation 0.001s;
-            animation: chartjs-render-animation 0.001s;
-        }
-    </style>
 </head>
 
 <body>
+    <!-- Tile -->
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Coin Base</a>
     </nav>
+    <!-- End tile -->
 
     <div class="container-fluid">
         <div class="row">
+            <!-- Menu -->
             <nav class="col-md-2 d-none d-md-block bg-light sidebar">
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
@@ -79,7 +56,9 @@
                     </ul>
                 </div>
             </nav>
+            <!-- End menu -->
 
+            <!-- Content -->
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                 <div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
                     <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
@@ -93,7 +72,7 @@
                     <h2 class="h2">Blockchain</h2>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group mr-2">
-                            <button type="button" class="btn btn-primary">Add Transactions</button>
+                            <button type="button" class="btn btn-primary" id="btnAddTransactions">Add Transactions</button>
                         </div>
                     </div>
                 </div>
@@ -150,13 +129,70 @@
                 </div>
             </main>
         </div>
+
+        <!-- Modal add transactions -->
+        <div class="modal fade" id="modalAddTransactions" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Transactions</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group row">
+                                <label for="inputminerName" class="col-sm-2 col-form-label">From</label>
+                                <div class="col-sm-10">
+                                    <select id="inputState" class="form-control">
+                                        <option selected>Choose...</option>
+                                        <option>Acc1</option>
+                                        <option>Acc2</option>
+                                        <option>Acc3</option>
+                                        <option>Acc4</option>
+                                        <option>Acc5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputminerName" class="col-sm-2 col-form-label">To</label>
+                                <div class="col-sm-10">
+                                    <select id="inputState" class="form-control">
+                                        <option selected>Choose...</option>
+                                        <option>Acc1</option>
+                                        <option>Acc2</option>
+                                        <option>Acc3</option>
+                                        <option>Acc4</option>
+                                        <option>Acc5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputminerName" class="col-sm-2 col-form-label">Amount</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="amount" placeholder="Amount">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Mining</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- End modal add transactions -->
+
     </div>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
+    <!-- Bootstrap core JavaScript -->
     <script src="./publics/js/jquery.min.js"></script>
     <script src="./publics/js/bootstrap.min.js"></script>
     <script src="./publics/js/angular.min.js"></script>
+    <script src="./js/index.js"></script>
 
 </body>
 
