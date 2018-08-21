@@ -70,7 +70,7 @@
 
                 <!-- Mining -->
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h2 class="h2">Mining</h2>
+                    <h2 class="h2">Transactions</h2>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group mr-2">
                             <button type="button" class="btn btn-primary" id="btnMining" ng-click="showModalMining()">Mining</button>
@@ -177,7 +177,7 @@
                             <div class="form-group row">
                                 <label for="inputminerName" class="col-sm-2 col-form-label">Miner</label>
                                 <div class="col-sm-10">
-                                    <select id="inputState" class="form-control" ng-model="addMiner">
+                                    <select id="inputState" class="form-control" ng-model="minerAddress">
                                         <option selected>Choose...</option>
                                         <option ng-repeat="miner in minerList" value="{{miner}}">{{miner.name}}</option>
                                     </select>

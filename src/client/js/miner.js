@@ -20,12 +20,13 @@ $(document).ready(function () {
 const API_ADD_MINER = 'http://localhost:3002/api/addMiner';
 const API_GET_MINERS = 'http://localhost:3002/api/miners';
 const API_GET_TXS = 'http://localhost:3002/api/txs';
+const API_MINING_TXS = 'http://localhost:3002/api/mining';
 
 var app = angular.module('appMiner', []);
 app.controller('ctrlMiner', function ($scope, $http) {
     $scope.minerName = '';
     $scope.minerList = [];
-    $scope.addMiner = null;
+    $scope.minerAddress = null;
     $scope.txList = [];
 
     $scope.init = function () {
@@ -70,7 +71,7 @@ app.controller('ctrlMiner', function ($scope, $http) {
     }
 
     $scope.showModalMining = function () {
-        $scope.addMiner = null;
+        $scope.minerAddress = null;
     }
 
     $scope.getTxs = function () {
@@ -88,6 +89,23 @@ app.controller('ctrlMiner', function ($scope, $http) {
     }
 
     $scope.mining = function () {
-        console.log('Miner : ', $scope.addMiner);
+        let minerAddress = {
+            id: JSON.parse($scope.minerAddress).id,
+            name: JSON.parse($scope.minerAddress).name
+        }
+        $http({
+                url: API_MINING_TXS,
+                method: "POST",
+                data: minerAddress
+            })
+            .then(function (res) {
+                    // success
+                    $scope.getMiner();
+                    $scope.getTxs();
+                },
+                function (res) {
+                    // failed
+                    console.log('Failed !');
+                });
     }
 });

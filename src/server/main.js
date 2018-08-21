@@ -5,6 +5,7 @@ const cors = require('cors')
 
 const MinerManage = require('./miner');
 const blockchain = require('./blockchain');
+const Address = require('./transactions').Address;
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -24,7 +25,7 @@ router.get('/', function (req, res) {
 
 // miner
 router.get('/miners', (req, res) => {
-    res.json(minerList.minerList);
+    res.json(minerList.getMinerList());
 });
 
 router.post('/addMiner', (req, res) => {
@@ -56,18 +57,31 @@ router.get('/txs', (req, res) => {
     res.json(blockchain.pendingTransactions);
 });
 
+// mining
+router.post('/mining', (req, res) => {
+    let miningRewarAddress = req.body;
+    console.log('Address : ', miningRewarAddress);
+    blockchain.minePendingTransactions(miningRewarAddress);
+    res.json({
+        msg: 'Successed !'
+    })
+});
+
 // get all blocks
 router.get('/blocks', (req, res) => {
     res.json(blockchain.chains);
 });
 
-
-// mine block
-// app.post('mineBlock', (req, res) => {
-//     const newBock = blockChain.generateNextBlock(req.body.data);
-// });
-
-// get all peers
+// get blance
+router.get('/blance/:id', (req, res) => {
+    let addressId = req.params.id;
+    let address = new Address(addressId, '');
+    let blance = blockchain.getBlanceOfAddress(address);
+    res.json({
+        blance: blance,
+        msg: 'Successed !'
+    });
+});
 
 app.use(cors());
 app.use('/api', router);

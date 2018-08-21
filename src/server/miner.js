@@ -33,6 +33,14 @@ class MinerList {
         blockchain.addBlockToChain(block);
         return true;
     }
+
+    getMinerList() {
+        for (const miner of this.minerList) {
+            let blance = blockchain.getBlanceOfAddress(miner);
+            miner.amount = blance;
+        }
+        return this.minerList;
+    }
 }
 
 module.exports = {
