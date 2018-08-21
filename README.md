@@ -1,37 +1,26 @@
 # Coin Base
 > Example demo coin base with block chain.
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
-
 ## Installation
 
-OS X & Linux:
+OS X & Linux & Windows:
 
 ```sh
-npm install my-crazy-module --save
+$ cd ROOT-FOLDER
+$ npm install
 ```
 
-Windows:
+## Run Coin Base
 
+> Server
 ```sh
-edit autoexec.bat
+$ cd ROOT-FOLDER
+$ npm start
 ```
-
-## Usage example
-
-A few motivating and useful examples of how your product can be used. Spice this up with code blocks and potentially more screenshots.
-
-_For more examples and usage, please refer to the [Wiki][wiki]._
-
-## Development setup
-
-Describe how to install all development dependencies and how to run an automated test-suite of some kind. Potentially do this for multiple platforms.
-
+> Client
 ```sh
-make install
-npm test
+$ cd ROOT-FOLDE
+Open file index.html
 ```
 
 ## Release History
@@ -40,7 +29,7 @@ npm test
     * The first proper release
     * CHANGE: Rename `foo()` to `bar()`
     * ADD: Add `init()`
-    * FIX: Crash when calling `baz()` (Thanks @GenerousContributorName!)
+    * FIX: Crash when calling `baz()` (Thanks @hai213k57@gmail !)
 * 0.0.1
     * Work in progress
 
